@@ -17,10 +17,10 @@ const getSearchHero =(name)=>{
   .then(json=>{
     console.log(json)
     imgDiv.innerHTML='';
-    let stats = getStatsHTML(json.results[0])
-     const name = `<h2>${json.results[0].name}</h2>`
-    // heroName.innerText = json.results[0].name;
-     imgDiv.innerHTML =`${name}<img height=300 width=300 src="${json.results[0].image.url}"<br>${stats}>`
+    showHeroInfo(json.results[0])
+    //  const name = `<h2>${json.results[0].name}</h2>`
+    // // heroName.innerText = json.results[0].name;
+    //  imgDiv.innerHTML =`${name}<img height=300 width=300 src="${json.results[0].image.url}"<br>${stats}`
     // heroStats.innerHTML = JSON.stringify(json.results[0].powerstats)
     
   // json.results.forEach(result =>{
@@ -36,16 +36,18 @@ const statToEMoji= {
 power:'⚡',
 combat:'⚔',
 }
-const getStatsHTML = (character) =>{
+const showHeroInfo = (character) =>{
   // for(stat in character.powerstats){
   //   console.log(stat)
   // }
+   const name = `<h2>${character.name}</h2>`
+ const img =  `<img height=300 width=300 src="${character.image.url}"/><br>`
   const stats=Object.keys(character.powerstats).map(stat=>{
    return `<p>${statToEMoji[stat]} ${stat.toUpperCase()}:${character.powerstats[stat]}</p>`
-  })
+  }).join('')
 
-console.log(stats)
-  return stats.join('')
+   imgDiv.innerHTML =`${name}${img}${stats}`
+
 }
 
 const getRandomSuperHero= (id) =>{
@@ -53,11 +55,11 @@ const getRandomSuperHero= (id) =>{
   .then(response=>response.json())
   .then(json=>{
     console.log(json)
-   let stats = getStatsHTML(json)
+  showHeroInfo(json)
      // heroName.innerText = json.name;
-    imgDiv.innerHTML='';
-    const name = `<h2>${json.name}</h2>`
-    imgDiv.innerHTML =`${name}<img height=300 width=300 src="${json.image.url}"<br>${stats}>`
+    // imgDiv.innerHTML='';
+    // const name = `<h2>${json.name}</h2>`
+    // imgDiv.innerHTML =`${name}<img height=300 width=300 src="${json.image.url}"<br>${stats}`
   })
 }
 
