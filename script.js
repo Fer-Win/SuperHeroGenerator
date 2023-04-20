@@ -41,7 +41,7 @@ const getStatsHTML = (character) =>{
   //   console.log(stat)
   // }
   const stats=Object.keys(character.powerstats).map(stat=>{
-   return `<p>${statToEMoji[stat]} ${stat}:${character.powerstats[stat]}</p>`
+   return `<p>${statToEMoji[stat]} ${stat.toUpperCase()}:${character.powerstats[stat]}</p>`
   })
 
 console.log(stats)
