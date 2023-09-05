@@ -72,4 +72,8 @@ window.addEventListener("keyup",(e)=>{
   if(e.key=='Enter'){
     getSearchHero(heroSearch.value);
   }
+ if(e.key=='r' || e.key=='R'){
+  let randomId = Math.ceil(Math.random()*731)
+  getRandomSuperHero(randomId)
+ }
 })
