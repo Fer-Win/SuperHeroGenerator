@@ -68,3 +68,8 @@ randomBtn.onclick=()=>{
   getRandomSuperHero(randomId)
 }
 heroBtn.onclick = () => getSearchHero(heroSearch.value);
+window.addEventListener("keyup",(e)=>{
+  if(e.key=='Enter'){
+    getSearchHero(heroSearch.value);
+  }
+})
